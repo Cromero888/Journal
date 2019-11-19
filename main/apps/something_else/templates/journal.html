@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <h1>HERES SOME SHIT!</h1>
+        <table class='table'>
+            <tr>
+                <th>Strain</th>
+                <th>Grower</th>
+                <th>Dispensary</th>
+                <th>Cannabis</th>
+                <th>Medium</th>
+                <th>Amount</th>
+                <th>Rating</th>
+                <th>Price</th>
+                
+            </tr>
+            <tr>
+                {% for entry in strain %}
+                <td>{{entry.strain_name}}</td>
+                <td>{{entry.grower}}</td>
+                <td>{{entry.dispensary}}</td>
+                <td>{{entry.cannabis}}</td>
+                <td>{{entry.medium}}</td>
+                <td>{{entry.amount}}</td>
+                <td>{{entry.rating}}</td>
+                <td>${{entry.price}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href='/'>Go back</a>
+    </body>
+</html>

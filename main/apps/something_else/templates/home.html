@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<title>My Stash - Home</title>
+</head>
+<body>
+	<div type="wrapper">
+		<div type="header">
+			<h1>Welcome to MyStash, {{First_Name}}!</h1>
+		</div>
+		<div type="body">
+			<div type = "add">
+					{% if messages %}
+					<ul class='messages'>
+					{% for message in messages%}
+						<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+					{%endfor%}
+					{%endif%}
+				<table>
+					<tr>
+						<form action="/add/" method="post">
+							{%csrf_token%}
+							<th><input type="text" name="strain_name" placeholder="Strain Name"></th>
+							<th><input type="text" name="grower" placeholder="Grower"></th>
+							<th><input type="text" name="dispensary" placeholder="Dispensary"></th>
+							<th><select name="cannabis">
+									<option style="color:purple">Indica</option>
+									<option style="color:red">Sativa</option>
+									<option style="color:green">Hybrid</option>
+								</select>
+							<th><select name="medium">
+									<option value="flower">Flower</option>
+									<option value="concentrate">Concentrate</option>
+									<option value="wax">Wax</option>
+									<option value="edible">Edible</option>
+								</select>
+							<th>$<input type="number" min="0.01" max="9999.99" step="0.01" name="price" value="0.01"></th>
+							<th><select type="number" name="rating">
+									<option value="5">👍</option>
+									<option value="3">😐</option>
+									<option value="1">👎</option>
+								</select>
+							</th>
+							<th><select type="text" name="amount">
+								<option value="Gram">Single Gram</option>
+								<option value="Eighth">Eighth</option>
+								<option value="Quarter Ounce">Quarter Ounce</option>
+								<option value="Half Ounce">Half Ounce</option>
+								<option value="Full Ounce">Full Ounce</option>
+							</select></th>
+							<th><input type="submit" name="submit"></th>
+						</form>
+					</tr>
+					<tr>
+						<!-- <td>{{strain_name}}</td>
+						<td>{{grower}}</td>
+						<td>{{dispensary}}</td>
+						<td>{{cannabis}}</td>
+						<td>{{type}}</td>
+						<td>${{price}}</td>
+						<td>{{avgrating}}</td> -->
+						<td><a href="journal/">Journal</a></td> 
+					</tr>
+
+				</table>
+				
+			</div>
+			
+		</div>
+	</div>
+
+</body>
+</html>
